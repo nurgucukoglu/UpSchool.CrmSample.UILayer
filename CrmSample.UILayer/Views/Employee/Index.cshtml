@@ -1,0 +1,59 @@
+﻿@model List<CrmSample.EntityLayer.Concrete.Employee>
+@{
+    ViewData["Title"] = "Index";
+    //Layout = "~/Views/Shared/_CrmLayout.cshtml";
+
+    if (ViewBag.isUserAdmin)
+    {
+        Layout = "~/Views/Shared/_CrmLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+}
+
+<h1>Personel Listesi</h1>
+
+<table class="d-lg-table table-bordered">
+<tr>
+    <th>#</th>
+    <th>Personel</th>
+    <th>Departman</th>
+    <th>Sil</th>
+    <th>Durum</th>
+    <th>Düzenle</th>
+    <th>Görevler</th>
+    <br />
+    <br />
+
+</tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.EmployeeID</td>
+        <td>@item.EmployeeName @item.EmployeeSurName</td>
+        <td>@item.Category.CategoryName</td> <!--categoryname gelsin istiyorum. o yüzden IEmployeeDal içine Include tanımladım/ entitye göre method yazdım-->
+        <td><a href="/Employee/DeleteEmployee/@item.EmployeeID" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/Employee/UpdateEmployee/@item.EmployeeID" class="btn btn-outline-success">Güncelle</a></td>
+            <td><a href="/EmployeeTask/Index/id=@item.EmployeeID" class="btn btn-outline-dark">Görevleri</a></td>
+        @{
+            if(item.EmployeeStatus==true)
+            {
+                <td><a href="/Employee/ChangeStatusToFalse/@item.EmployeeID" class="btn btn-outline-warning">Pasif Yap</a></td>
+               
+            }
+            else     
+            {
+                  <td><a href="/Employee/ChangeStatusTotrue/@item.EmployeeID" class="btn btn-outline-danger">Aktif Yap</a></td>
+            }
+        }
+    </tr>
+}
+</table>
+<br />
+<br />
+<br />
+<a href="/Employee/AddEmployee/" class="btn btn-primary">Yeni Personel Girişi</a>

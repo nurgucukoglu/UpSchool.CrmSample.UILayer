@@ -1,0 +1,49 @@
+﻿@using CrmSample.EntityLayer.Concrete
+@model List<Customer>
+@{
+    Layout = "~/Views/Shared/_CrmLayout.cshtml";
+    
+
+    if (ViewBag.isUserAdmin)
+    {
+        Layout = "~/Views/Shared/_CrmLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+}
+<link href="~/../../../../eğİtİm/crmsample.uilayer/crmsample.uilayer/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/../../../../eğİtİm/crmsample.uilayer/crmsample.uilayer/wwwroot/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<h1>Müşteri Listesi Listesi</h1>
+
+<table class="table table-bordered">
+
+    <tr>
+      
+        <th>Müşteri Adı</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+          
+            <td>@item.CustomerName @item.CustomerSurname</td>
+            
+
+        </tr>
+    }
+
+</table>
+
+<a href="/Report/DynamicExcel/" class=" btn btn-outline-info">Müşteriler Excel Listesi</a>
+<br />
+<br />
+<a href="/Report/StaticPdfReport/" class=" btn btn-outline-success">Müşteri Sözleşme Gereksinimleri PDF</a>
+
+
+
+
+

@@ -1,0 +1,62 @@
+﻿@model List<EmployeeTask>
+@{
+    ViewData["Title"] = "Index";
+    //Layout = "~/Views/Shared/_CrmLayout.cshtml";
+
+    int count = 0;
+    }
+   
+    if (ViewBag.isUserAdmin)
+    {
+        Layout = "~/Views/Shared/_CrmLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+   
+
+<!--id görmek istemiyorum sayı görmek istiyorum o yüzden count değeri tanımladım.-->
+
+<h1>Görev Listesi</h1>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Durum</th>
+        <th>Tarih</th>
+        <th>Görevin Sorumlu Olduğu Personel</th>
+       
+       
+        <th>Detaylar</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        @if (item.AppUserID == ViewBag.Id)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Title</td>
+                <td>@item.Status</td>
+                <td>@item.Date.ToString("dd.MMM.yyyy")</td>
+                <td>@item.AppUser.Name @item.AppUser.SurName</td>
+
+
+                <td><a href="/Employee/EmployeeTaskDetail/Index" class="btn btn-outline-dark">Detaylar</a></td>
+            </tr>
+        }
+        
+
+    }
+
+</table>
+
+<br />
+<br />
+<a href="/EmployeeTask/AddTask" class="btn btn-outline-info">Yeni Görev Girişi</a>
+

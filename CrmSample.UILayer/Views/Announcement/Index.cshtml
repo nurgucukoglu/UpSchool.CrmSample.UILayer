@@ -1,0 +1,40 @@
+﻿@model List<Announcement>
+@{
+    ViewData["Title"] = "Index";
+    //Layout = "~/Views/Shared/_CrmLayout.cshtml";
+   
+
+     if (ViewBag.isUserAdmin)
+    {
+        Layout = "~/Views/Shared/_CrmLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+<script src="~/../../../../eğİtİm/crmsample.uilayer/crmsample.uilayer/wwwroot/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/../../../../eğİtİm/crmsample.uilayer/crmsample.uilayer/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<h1>DUYURULAR</h1>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Tarih</th>
+      
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.AnnouncementID</td>
+            <td>@item.Title</td>
+            <td>@item.Date</td>
+           
+        </tr>
+    }
+</table>
+
+@*<a href="#" class="btn btn-outline-primary">Yeni Duyuru Ekle</a>*@
+

@@ -1,0 +1,27 @@
+﻿@model CrmSample.EntityLayer.Concrete.Category
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/_CrmLayout.cshtml";
+
+    //if (ViewBag.isUserAdmin)
+    //{
+    //    Layout = "~/Views/Shared/_CrmLayout.cshtml";
+    //}
+    //else
+    //{
+    //    Layout = "~/Views/Shared/_Layout.cshtml";
+    //}
+}
+ <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<h1>Yeni Departman</h1>
+
+<form method="post">
+    <label>Departman Adı</label>
+    <input type="text" asp-for="CategoryName" class="form-control"/> <br />
+
+    <label>Departman Açıklaması</label>
+    <input type="text" asp-for="CategoryDescription" class="form-control"/>  <br />
+
+    <button class="btn btn-primary">Departman Ekle</button>
+</form>
+

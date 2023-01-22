@@ -1,0 +1,29 @@
+﻿@model EmployeeTask
+@{
+    ViewData["Title"] = "AddTask";
+
+    
+    if (ViewBag.isUserAdmin)
+    {
+        Layout = "~/Views/Shared/_CrmLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+
+<br />
+<form method="post">
+    <label>Personel</label>
+    @Html.DropDownListFor(x => x.EmployeeID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.AppUserID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+    <br />
+    <label>Görev Başlığı</label>
+    <input type="text" class="form-control" asp-for="Title" />
+    <br />
+    <label>Görev Açıklaması</label>
+    <textarea cols="2" rows="5" class="form-control" asp-for="Details"></textarea>
+    <br />
+    <button class="btn btn-outline-info">Görevi Tanımla</button>
+</form>

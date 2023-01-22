@@ -1,0 +1,31 @@
+﻿@model List<EmployeeTask>
+@{
+    ViewData["Title"] = "EmployeeTaskListByProfile";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+    int count = 0;
+}
+
+<h3>Görevleriniz</h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Durum</th>
+        <th>Tarih</th>
+        <th>Detaylar</th>
+    
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.Title</td>
+            <td>@item.Status</td>
+            <td>@item.Date.ToString("dd.MMM.yyyy")</td>
+            <td><a href="/Employee/EmployeeTaskDetail/Index/@item.EmployeeTaskID" class="btn btn-outline-warning">Detaylar</a></td>
+           
+        </tr>
+    }
+</table>

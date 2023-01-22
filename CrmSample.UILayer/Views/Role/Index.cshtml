@@ -1,0 +1,41 @@
+﻿@model List<AppRole>
+@{
+    ViewData["Title"] = "Index";
+
+    //Layout = "~/Views/Shared/_CrmLayout.cshtml";
+
+     if (ViewBag.isUserAdmin)
+    {
+        Layout = "~/Views/Shared/_CrmLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+
+<h1>Rol Listesi</h1>
+
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Rol Adı</th>
+        <th>Rol Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td><a href="/Role/DeleteRole/@item.Id" class="btn btn-danger">Sil</a></td>
+        </tr>
+       
+    }
+</table>
+<a href="/Role/AddRole/" class="btn btn-primary">Yeni Rol Girişi</a>
+<br />
+<br />
+<a href="/Role/UserList/" class="btn btn-primary">Yeni Rol Atama</a>
+

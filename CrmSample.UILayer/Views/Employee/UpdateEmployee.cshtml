@@ -1,0 +1,39 @@
+﻿@model Employee //ViewImport.da tanımlı o yüzden böyle yazdım.
+@{
+    ViewData["Title"] = "UpdateEmployee";
+    Layout = "~/Views/Shared/_CrmLayout.cshtml";
+   
+    //if (ViewBag.isUserAdmin)
+    //{
+    //    Layout = "~/Views/Shared/_CrmLayout.cshtml";
+    //}
+    //else
+    //{
+    //    Layout = "~/Views/Shared/_Layout.cshtml";
+    //}
+}
+
+<h1>PErsonek Güncelleme</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="EmployeeID" /> <!--ön tarafta id.leri gizler-->
+    <label>PErsonel Adı</label>
+    <input type="text" asp-for="EmployeeName" class="form-control" />
+    <br />
+    <label>PErsonel SoyAdı</label>
+    <input type="text" asp-for="EmployeeSurName" class="form-control" />
+    <br />
+    <label>PErsonel Mail</label>
+    <input type="text" asp-for="EmployeeMail" class="form-control" />
+    <br />
+    <label>PErsonel Görsel</label>
+    <input type="text" asp-for="EmployeeMail" class="form-control" />
+    <br />
+    <label>PErsonel Departmanı</label>
+    <input type="text" asp-for="CategoryID" class="form-control" />
+    <br />
+    <button class="btn btn-warning">Personeli Güncelle</button>
+
+    <!--forward (7) get turn catch use work-->
+
+</form>
